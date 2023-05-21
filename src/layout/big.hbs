@@ -14,7 +14,7 @@
   </head>
 
   <body>
-    {{#with header}}
+    {{!-- {{#with header}}
 		<header>
 			<div>
 				<h1> {{name.first}} {{name.last}} {{title}} </h1>
@@ -36,15 +36,17 @@
 			</div>
 			<hr>
 		</header>
-     {{/with}}
+     {{/with}} --}}
 
 	{{> nav}}
 
+	<br>
+	<hr>
+
     {{!  ↓  ця кострукція показує куди шаблонізатору треба вставляти код з container файлу   --}}
     {{{body}}}
-
-
 	{{> footer}}
+
   </body>
 
 </html>
