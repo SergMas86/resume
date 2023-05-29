@@ -6,9 +6,9 @@
 <div>
 {{#with program.excursion}}
     <div>
-        {{!-- {{#with excursion}},  --}}
+
         <h1>{{name}} <date>{{date}}</date></h1> in <h1>{{location.city}}, {{location.country}}</h1>  
-        {{!-- {{/with}} --}}
+   
     </div>
     <div>        
         <div><h2>PROGRAM</h2></div>
@@ -24,24 +24,24 @@
                             {{#with details}}
 
 
-                                        {{#with guide}}                                                                                                                    
-                                                <div> <b>guide: {{name}}</b>, {{language}}, 
+                                        {{#with guide}} 
+                                                                                        <div> <b>guide: {{name}}</b>, {{language}}, 
                                                 <meter value="{{rating}}" max="5" min="0" optimum="4"></meter> {{rating}}/5</div>
-
+                                       
                                         {{/with}}
-
+                                   
                                     {{#with museum}}
                                 <details>                                 
                                     <summary> 
-                                        More informaation {{name}} 
-                                        
+                                        More informaation {{name}}                                         
+                                  
                                     </summary>
                                     <p>
                                         <ul><h2>{{name}}</h2>
                                             <li><h4>location</h4>
                                             <div><address>{{location.address}}, {{location.city}}, {{location.country}}</address></div>
-                                            </li>
-                                            
+                                            </li>                                            
+              
                                             <h4>exhibits</h4>
                                             {{#each exhibits}}
                                             <li>                                        
@@ -81,9 +81,9 @@
                                 {{/with}}
                             {{/with}}
                         </li>
-                    </div>
+                    </div>            
 
-                    
+
             </ul>
 
         {{/each}}
