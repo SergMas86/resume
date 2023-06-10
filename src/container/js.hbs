@@ -4,9 +4,131 @@
 --}}
 
 <div>
-    <section>
-    <h1>{{name}}</h1>
-        {{#each name}}
+        <section>
+            <div>            
+                <h1>{{name}}</h1>
+                <hr>
+                <div class="text-success">
+                </div>
+                {{#with history}}
+                <div> founder in {{year}} by {{founder}}
+                </div>
+                {{/with}}
+            </div>
+        <p>
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            {{name}}
+        </button>
+        </p>
+            <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                {{description}}
+            </div>
+            </div> 
+        </section>   
+    
+            <div>
+                <section> <h3>types</h3>  
+                    <ul class="list-group">    
+                    {{#each types}}  <li class="list-group-item"> {{.}} </li> {{/each}}
+                    </ul>
+                </section>
+            </div>
+
+            <div>
+                <section> <h3>syntax</h3>
+                    <ul>   
+                    {{#with syntax}}
+
+                        <li> variables            
+                            <ul class="list-group">                 
+                                <li class="list-group-item"> 
+                                    {{#each variables}}  
+                                    {{.}}
+                                    {{/each}}                      
+                                </li>    
+                            </ul>
+                        </li>
+
+                        <li> functions            
+                            <ul class="list-group">                 
+                                <li class="list-group-item"> 
+                                    {{#each functions}}  
+                                    {{.}}
+                                    {{/each}}                      
+                                </li>   
+                            </ul>
+                        </li>
+
+                        <li> conditionals            
+                            <ul class="list-group">                 
+                                <li class="list-group-item"> 
+                                    {{#each conditionals}}  
+                                    {{.}}
+                                    {{/each}}                      
+                                </li>     
+                            </ul>
+                        </li>
+
+                        <li> loops            
+                            <ul class="list-group">                 
+                                <li class="list-group-item"> 
+                                    {{#each loops}}  
+                                    {{.}}
+                                    {{/each}}                      
+                                </li>     
+                            </ul>
+                        </li>
+
+                        <li> classes            
+                            <ul class="list-group">                 
+                                <li class="list-group-item"> 
+                                    {{#each classes}}  
+                                    {{.}}
+                                    {{/each}}                      
+                                </li>     
+                            </ul>
+                        </li>
+                    {{/with}}
+                    </ul>
+                </section>
+            </div>
+
+            <div>
+                <section> <h3>features</h3>  
+                    <ul class="list-group">    
+                    {{#each features}}  <li class="list-group-item"> {{.}} </li> {{/each}}
+                    </ul>
+                </section>
+            </div>
+
+            <div>
+                <section> <h3>tools</h3>  
+                    <ul class="list-group">    
+                    {{#each tools}}  <li class="list-group-item"> {{.}} </li> {{/each}}
+                    </ul>
+                </section>
+            </div>
+
+            <div>
+                <section> <h3>community</h3>  
+                {{#each community}}
+                    <ul class="list-group"> {{type}}  
+                    <li class="list-group-item"> <button type="button" class="btn btn-outline-primary">{{name}}</button> </li>
+                    </ul>
+                 {{/each}}
+                </section>
+            </div>
+
+</div>
+
+
+
+
+
+
+
+        {{!-- {{#each name}}
         <dl>
             <div>
                 <dt><h3>{{name}} ver. {{version}}</h3></dt>
@@ -80,7 +202,7 @@
         </dl>
         {{/each}}
     </section>
-</div>
+</div> --}}
 
 {{!-- 
     Цей код містить лише те, що буде виводитись в {{{body}}} в layout/default.hbs
