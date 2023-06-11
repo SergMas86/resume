@@ -1,0 +1,234 @@
+{{!-- 
+Це код container файлу для summary сторінки, 
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/summary"
+--}}
+
+<div>
+        <section>
+            <div>            
+                <h1>{{make}} {{model}} {{year}}</h1>
+                <h2>
+                    {{#with engine}}
+                    <div>
+                        {{displacement}}, {{type}}, {{horsepower}} Hp, {{transmission.type}}
+                    </div>
+                    {{/with}}
+
+                </h2>
+                <hr>
+                <div class="text-success">
+                </div>
+                {{#with price}}
+                <div> 
+                        <p>
+                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            total price {{total}} $
+                        </button>
+                        </p>
+                            <div class="collapse" id="collapseExample">
+                            <div class="card card-body">
+                                <ul>
+                                    <li>
+                                        base {{base}} $
+                                    </li>
+                                    <li>
+                                        destination {{destination}} $
+                                    </li>
+                                    <li> options
+                                        <ul> 
+                                            {{#with options}}
+                                                
+                                                <li>navigation {{navigation}}$</li>
+                                                <li>moonroof {{moonroof}}$</li>
+                                                <li>premium_paint {{premium_paint}}$</li>
+                                                
+                                            {{/with}}
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>                 
+                </div>
+                {{/with}}
+            </div>  
+<br>
+    <div>
+        <section> <h3>INFORMATION</h3>  
+            <ul class="list-group">    
+                <li class="list-group-item"> <h4>color</h4>
+                    <ul>
+                        <li>
+                            {{color}}
+                        </li>
+                    </ul>                    
+                </li>
+                <li class="list-group-item"> <h4>features</h4>
+                {{#with features}}
+                    <ul class="list-group"> 
+                        <li class="list-group-item"> <h5>interior</h5>
+                                {{#with interior}}
+                                    <ul> 
+                                            <li> <h6>seats</h6>
+                                                <ul class="list-group">
+                                                    <li class="list-group-item">
+                                                    {{#with seats}}
+                                                    {{color}} {{material}}, {{#if heated includeMore=true}}heated{{/if}},{{#if ventilated includeMore=true}} ventilated {{/if}}
+                                                    {{/with}}
+                                                    </li>
+                                                </ul>                                         
+                                            </li>  
+
+                                            <li> <h6>dashboard</h6>
+                                            {{#with dashboard}}
+                                                <ul class="list-group">
+                                                    
+                                                    <li class="list-group-item">
+                                                    
+                                                    {{color}} {{material}}, {{#if heated includeMore=true}}heated{{/if}},{{#if ventilated includeMore=true}} ventilated {{/if}}
+                                                    
+                                                    </li>
+
+                                                    <li class="list-group-item">display
+                                                        {{#with display}}
+                                                            {{type}} {{size}}" resolution {{resolution}} {{#if touchscreen includeMore=true}}touchscreen{{/if}}
+                                                        {{/with}}
+                                            {{/with}}
+                                                    </li>
+                                                </ul>                                         
+                                            </li>  
+                                            <li> <h6>audio</h6>
+                                            {{#with audio}}
+                                                <ul class="list-group">                                            
+                                                    <li class="list-group-item">                                            
+                                                    {{system}} {{speakers}} speakers, 
+                                                    {{#if subwoofer includeMore=true}}subwoofer{{/if}}
+                                                    {{#if bluetooth includeMore=true}} bluetooth {{/if}}
+                                                    {{#if USB includeMore=true}} USB {{/if}}                                            
+                                                    </li>
+                                            {{/with}}
+                                                    </li>
+                                                </ul>                                         
+                                            </li> 
+
+                                    </ul>
+                                {{/with}}
+                        </li>
+                
+                        <li class="list-group-item"> <h5>exterior</h5>
+                                {{#with exterior}}
+                                    <ul> 
+                                            <li> <h6>wheels</h6>
+                                                <ul class="list-group">
+                                                    <li class="list-group-item">
+                                                    {{#with wheels}}
+                                                    {{size}}", {{type}} {{color}} 
+                                                    {{/with}}
+                                                    </li>
+                                                </ul>                                         
+                                            </li>  
+
+                                            <li> <h6>headlights</h6>
+                                            {{#with headlights}}
+                                                <ul class="list-group">
+                                                    
+                                                    <li class="list-group-item">                                                    
+                                                    {{type}} {{brightness}}, {{#if automatic includeMore=true}}automatic{{/if}}                                                    
+                                                    </li>                                                    
+                                            {{/with}}
+                                            </li>
+
+                                            <li> <h6>sunroof</h6>
+                                                {{#with sunroof}}
+                                                    <ul class="list-group">
+                                                        
+                                                        <li class="list-group-item">                                                    
+                                                        {{type}} {{size}}, {{#if automatic includeMore=true}}automatic{{/if}}                                                    
+                                                        </li>                                                   
+                                                {{/with}}
+                                            </li>  
+                                            
+                                    </ul>
+                                {{/with}}
+                        </li>
+                    
+
+                    </ul>
+                    </ul>
+
+
+                    <li class="list-group-item"> <h5>safety</h5>
+                        
+                        <ul>
+                            <li> <h6>airbags</h6>
+                                {{#with safety.airbags}}
+                                 <ul class="list-group">
+                                        <li class="list-group-item">front {{front}} side {{side}} knee {{knee}} rear {{rear}}</li> 
+                                </ul>
+                                {{/with}}
+                            </li>
+
+                            <li> <h6>assistance</h6>
+                            {{#with safety.assistance}}
+                                 <ul class="list-group">
+                                        <li class="list-group-item">
+                                            {{#if blind_spot_monitoring includeMore=true}}blind_spot_monitoring{{/if}}
+                                            {{#if rear_cross_traffic_alert includeMore=true}}rear_cross_traffic_alert{{/if}}
+                                            {{#if lane_departure_warning includeMore=true}}lane_departure_warning{{/if}}
+                                            {{#if adaptive_cruise_control includeMore=true}}adaptive_cruise_control{{/if}}
+                                            {{#if collision_warning includeMore=true}}collision_warning{{/if}}
+                                        </li> 
+                                </ul>
+                            {{/with}}
+                            </li>
+                       
+                        </ul> 
+
+                    </li>
+
+                </ul>                    
+                {{/with}}
+                
+                </li>
+
+                <li class="list-group-item"> <h4>engine</h4>
+                {{#with engine}}
+
+                        <ul class="list-group">
+                                        <li class="list-group-item">
+                                            displacement {{displacement}}
+                                            horsepower {{horsepower}}
+                                            torque {{torque}}
+                                        </li>
+                                        <li class="list-group-item"> transmission
+                                            {{#with transmission}}
+                                            type {{type}}
+                                            gears {{gears}}
+                                            {{/with}}
+                                        </li>
+                        </ul>
+
+                {{/with}}
+                </li>
+
+                <li class="list-group-item"> <h4>fuel_economy</h4>
+                {{#with fuel_economy}}
+
+                        <ul class="list-group">
+                                        <li class="list-group-item">
+                                            city {{city}}
+                                            highway {{highway}}
+                                            combined {{combined}}
+                                        </li>
+                        </ul>
+
+                {{/with}}
+                </li>
+
+            </ul>
+        </section>
+    </div>
+
+</div>
+
+
+
+
