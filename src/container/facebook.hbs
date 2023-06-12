@@ -1,0 +1,94 @@
+{{!-- 
+Це код container файлу для summary сторінки, 
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/summary"
+--}}
+
+<div>
+        <section>
+            <div>            
+                <h1 class="p-3 mb-2 bg-primary text-white">
+                <div class="spinner-border text-light" role="status">
+                <span class="visually-hidden">Loading...</span>
+                </div>
+                {{name}}
+                </h1>
+            </div>
+        </section>
+        
+        <section>            
+            <div>            
+                <ul>
+                    <h2> users </h2>
+                {{#each users}}
+                    <li><h3><p class="text-primary">{{name}} id {{id}} {{gender}} age {{age}}</p></h3>
+                        <ul>                            
+                            <li> <h4>friends</h4>
+                                {{#each friends}}  
+                                <ul>
+
+                                    <li>
+                                         {{name}} id {{id}} gender {{gender}} age {{age}}    
+                                                                           
+                                            <ul> mutual friends:  
+                                                {{#each mutual_friends}}
+                                                
+                                                <li>
+                                                   <p class="text-light bg-dark">{{name}} {{id}} {{gender}} {{age}}</p>
+                                                    <ul>mutual friends
+                                                        {{#each mutual_friends}}
+                                                        <li>
+                                                    {{name}} {{id}} {{gender}} {{age}}
+                                                        </li>
+                                                        {{/each}}
+                                                    </ul>
+                                                </li>
+                                               
+                                                {{/each}}
+                                                
+                                            </ul>
+
+                                    </li>                                    
+                                    {{#each groups}}  
+                                    <li> {{name}} id {{id}} gender {{description}}                                        
+                                        <ul>members:  
+                                            {{#each members}}
+                                            <li>
+                                                {{name}} {{id}} {{gender}} {{age}}
+                                            </li>
+                                            {{/each}}
+                                        </ul>
+                                    </li>
+                                    {{/each}}  
+                                
+                                </ul> 
+                                {{/each}}                                 
+                            </li>
+                                                     
+                            <li> <h4>groups:</h4>
+                            {{#each groups}}                         
+                                <ul>
+                                    <li> {{name}} {{id}} {{description}}
+                                        <ul>members:
+                                            {{#each members}}
+                                            <li>
+                                                {{name}} {{id}} {{gender}} {{age}}
+                                            </li>
+                                            {{/each}}
+                                        </ul>
+                                    </li>
+                                </ul>
+                                {{/each}}
+                            </li>
+                        </ul>
+                    </li>
+                {{/each}}
+                </ul>
+            </div>
+        </section>
+</div>
+
+
+
+
+
+
