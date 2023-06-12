@@ -1,0 +1,229 @@
+{{!-- 
+Це код container файлу для summary сторінки, 
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/summary"
+--}}
+
+<div>
+        <section>
+            <div>            
+                <h1>{{name}}</h1>
+                <h2>
+                    {{#with engine}}
+                    <div>
+                        {{displacement}}, {{type}}, {{horsepower}} Hp, {{transmission.type}}
+                    </div>
+                    {{/with}}
+
+                </h2>
+                <hr>
+                <div class="text-success">
+                </div>
+                <div> 
+                    <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            Bay {{price}} $
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Добавить товар в Корзину ?</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Вы покупаете {{name}} за {{price}}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Нет</button>
+                                    <button type="button" class="btn btn-primary">Да</button>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                </div>
+                        <nav class="nav">
+                        <a class="nav-link" href="#">{{category}}</a>
+                        </nav>
+            </div>  
+<br>
+    <div>
+        <section> <h3>INFORMATION</h3>  
+        {{#with features}}
+
+                <div class="accordion" id="accordionPanelsStayOpenExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                            <h4>processor</h4>
+                        </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                        <div class="accordion-body">
+                            {{#with processor}}
+                            <strong>{{brand}} {{model}} </strong> {{speed}} {{cores}} cores {{cache}}
+                            {{/with}}
+                        </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                            <h4>memory</h4>
+                        </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            {{#with memory}}
+                            <strong>{{type}} {{size}}</strong> speed {{speed}}
+                            {{/with}}
+                        </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                            <h4>storage</h4>
+                        </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            {{#with storage}}
+                            <strong>{{type}}</strong> {{size}}
+                            {{/with}}
+                        </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse4" aria-expanded="false" aria-controls="panelsStayOpen-collapse4">
+                            <h4>display</h4>
+                        </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapse4" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            {{#with display}}
+                            <strong>{{size}}</strong> {{resolution}} {{technology}} {{color_space}}
+                            {{/with}}
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                            <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse5" aria-expanded="false" aria-controls="panelsStayOpen-collapse5">
+                                <h4>graphics</h4>
+                            </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapse5" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                {{#with graphics}}
+                                <strong>{{brand}}</strong> {{model}} {{memory}}
+                                {{/with}}
+                            </div>
+                            </div>
+                        </div>
+
+                    <div class="accordion-item">
+                            <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse6" aria-expanded="false" aria-controls="panelsStayOpen-collapse6">
+                                <h4>ports</h4>
+                            </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapse6" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                    <ul>
+                                        {{#each ports}}
+                                        <li>
+                                            <strong>{{type}}</strong> count {{count}} 
+                                        
+                                                            <ul>
+                                                                {{#each features}}
+                                                                <li>
+                                                                    {{.}}
+                                                                </li>    
+                                                                {{/each}}                                        
+                                                            </ul> 
+                                        </li>
+                                        {{/each}}
+                                    </ul>
+                            </div>
+                            </div>
+                        </div>
+                    <div class="accordion-item">
+                            <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse7" aria-expanded="false" aria-controls="panelsStayOpen-collapse7">
+                                <h4>battery</h4>
+                            </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapse7" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                {{#with battery}}
+                                <strong>{{type}}</strong> {{capacity}} {{life}}
+                                {{/with}}
+                            </div>
+                            </div>
+                    </div>
+
+
+
+
+                    <div class="accordion-item">
+                            <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse8" aria-expanded="false" aria-controls="panelsStayOpen-collapse8">
+                                <h4>Other information</h4>
+                            </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapse8" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                <ul>
+                                
+                                    <li>
+                                        <strong>weight {{weight}}</strong>
+                                    </li>
+                                    <li> 
+                                        {{#with dimensions}}
+                                            <strong>dimensions {{weight}}</strong> {{height}} * {{width}} * {{depth}}
+                                        {{/with}}
+                                    </li>
+                                    <li>                                         
+                                            <strong>operating system {{operating_system}}</strong>
+                                    </li>
+                                </ul>
+                            </div>
+                            </div>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+                <section>
+                <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    {{#each accessories}}
+                    <div class="carousel-item active">
+                        
+                                        <div class="card" style="width: 15rem;">
+                                    <img src="..." class="card-img-top" alt="accessories">
+                                    <div class="card-body">
+                                        <h5 class="card-title">accessories</h5>
+                                        <p class="card-text">{{name}}</p>
+                                        <a href="#" class="btn btn-primary">Bay {{price}}$</a>
+                                    </div>
+                                    </div>
+                    </div>
+                    {{/each}}
+                </div>
+                </div>
+                </section>
+        {{/with}}
+        </bady>
+        </section>
+    </div>
+</div>
+
+
+
+
+
+
